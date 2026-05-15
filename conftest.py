@@ -14,5 +14,10 @@ def driver():
     options.no_reset = True
 
     driver = webdriver.Remote("http://127.0.0.1:4723", options=options)
+
+    #Запуск со свежего Settings на главном экране
+    driver.terminate_app("com.android.settings")
+    driver.activate_app("com.android.settings")
+
     yield driver
     driver.quit()

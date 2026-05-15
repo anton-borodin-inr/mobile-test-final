@@ -38,3 +38,6 @@ class BasePage:
         actions.pointer_action.move_to_location(end_x, end_y)
         actions.pointer_action.pointer_up()
         actions.perform()
+
+    def find_all(self, locator):
+        return self.wait.until(EC.presence_of_all_elements_located(locator))
