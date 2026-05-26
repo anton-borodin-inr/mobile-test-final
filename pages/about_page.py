@@ -1,3 +1,4 @@
+import allure
 from appium.webdriver.common.appiumby import AppiumBy
 from pages.base_page import BasePage
 
@@ -8,11 +9,13 @@ class AboutPage(BasePage):
         '.scrollIntoView(new UiSelector().text("About emulated device"))'
     )
 
+    @allure.step("Open 'About emulated device' page")
     def open_from_home(self):
         self.click(self.ABOUT_PHONE)
 
+    @allure.step("Scroll to {field_name}")
     def get_field_value(self, field_name):
-        #Выполняется скролл до искомого элемента с задаваемым title
+        #Scroll to exact element with title
         scroll_locator = (
             AppiumBy.ANDROID_UIAUTOMATOR,
             f'new UiScrollable(new UiSelector().scrollable(true))'
@@ -20,7 +23,7 @@ class AboutPage(BasePage):
         )
         self.find(scroll_locator)
 
-        #Читаем значение рядом с этим title
+        #Read value near title
         value_locator = (
             AppiumBy.XPATH,
             f'//android.widget.TextView[@resource-id="android:id/title" and @text="{field_name}"]'

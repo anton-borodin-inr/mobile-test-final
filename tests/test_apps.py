@@ -7,6 +7,8 @@ from pages.apps_page import AppsPage
 @allure.epic("Settings")
 @allure.feature("App info window")
 @allure.story("App info window can be opened")
+@allure.title("App info for YouTube app can be opened")
+@allure.severity(allure.severity_level.NORMAL)
 def test_scroll_to_app_in_full_list(driver):
     apps = AppsPage(driver)
     apps.open_apps_section()
